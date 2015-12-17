@@ -1,0 +1,9 @@
+digraph Stankfile{
+rankdir=BT;
+Canvas[
+shape="record", 
+label = " Canvas |  base : java.lang.String\l serialVersionUID : long\l|+ <init>() : void\l setGraphicsConfiguration() : void\l constructComponentName() : java.lang.String\l+ addNotify() : void\l+ paint() : void\l+ update() : void\l postsOldMouseEvents() : boolean\l+ createBufferStrategy() : void\l+ createBufferStrategy() : void\l+ getBufferStrategy() : java.awt.image.BufferStrategy\l <clinit>() : void\l}"
+];
+Canvas -> Component[arrowhead="onormal", style="dashed"] 
+Canvas -> Accessible[arrowhead="vee", style="dashed"] 
+}

@@ -1,0 +1,3 @@
+diagraph Stankfile{
+rankdir=BT;
+}
