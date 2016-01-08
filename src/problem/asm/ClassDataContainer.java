@@ -61,12 +61,12 @@ public class ClassDataContainer {
 		}
 		
 		for(int i = 1; i < this.methodVisitor.argumentTypes.size(); i++) {
-			this.outputStream.println(this.declVisitor.nameGlobal + " -> " + "\"" +this.methodVisitor.argumentTypes.get(i) + "\"" + "[arrowhead=\"onormal\", style=\"dashed\"] ");
+			this.outputStream.println(this.declVisitor.nameGlobal + " -> " + "\"" +this.methodVisitor.argumentTypes.get(i) + "\"" + "[arrowhead=\"curve\", style=\"dashed\"] ");
 			// This should be for the uses section
 		}
 		
 		for(int i = 1; i < fieldVisitor.fieldTypes.size(); i++) {
-			this.outputStream.println(this.declVisitor.nameGlobal + " -> " + "\"" + this.fieldVisitor.fieldTypes.get(i) + "\"" + "[arrowhead=\"onormal\", style=\"solid\"] ");
+			this.outputStream.println(this.declVisitor.nameGlobal + " -> " + "\"" + this.fieldVisitor.fieldTypes.get(i) + "\"" + "[arrowhead=\"curve\", style=\"solid\"] ");
 			// This should be for the uses section
 		}
 	}
