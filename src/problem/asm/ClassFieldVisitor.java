@@ -13,8 +13,11 @@ public class ClassFieldVisitor extends ClassVisitor {
 	public String name;
 	public String desc;
 	public String signature;
+	public String symbol = "";
+	public String type;
 	public String[] exceptions;
 	public ArrayList<String> fields = new ArrayList<String>();
+	public ArrayList<String> fieldTypes = new ArrayList<String>();
 
 
 	public ClassFieldVisitor(int arg0) {
@@ -29,20 +32,29 @@ public class ClassFieldVisitor extends ClassVisitor {
 	
 	public FieldVisitor visitField(int access, String name, String desc, 
 			String signature, Object value) {
-		
+
 		FieldVisitor toDecorate = super.visitField(access, name, 
 				desc, signature, value);
+
+		type = Type.getType(desc).getClassName();
 		
-		String type = Type.getType(desc).getClassName();
+		//System.out.println("Type: " + type);
 		
-		//System.out.println("    " + type + " " + name);
+		if(type.contains(".")) {
+			type = type.replace(".", "");
+		}
 		
-		String symbol = "";
+		if(fieldTypes.contains(type)==true){
+			// do nothing
+		}else {
+			fieldTypes.add(type);
+		}
+
 		if((access & Opcodes.ACC_PUBLIC) != 0) {
 			symbol = "+";
 		}
 		
-		String line = symbol + " " + name + " : " + type + "\\l";
+		String line = symbol + " " + name + " : " + type + " \\l";
 		fields.add(line);
 		
 		return toDecorate;

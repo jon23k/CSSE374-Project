@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.Type;
 
 public class ClassDeclarationVisitor extends ClassVisitor {
 	
@@ -15,10 +16,11 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 	public ArrayList<String> implementers = new ArrayList<String>();
 	public String extendNameGlobal;
 	public String implementerNameGlobal;
-
+	//public ArrayList<String> implementedNames = new ArrayList<String>();
 
 	public ClassDeclarationVisitor(int arg0) {
 		super(arg0);
+		//System.out.println(this.getClass().getName());
 		// TODO Auto-generated constructor stub
 	}
 
@@ -30,38 +32,35 @@ public class ClassDeclarationVisitor extends ClassVisitor {
 	@Override
 	public void visit(int version, int access, String name, String signature, 
 			String superName, String[] interfaces) {
-		System.out.println("Class: " + name + " extends " + superName + " implements " + Arrays.toString(interfaces));
 
 		String[] parts = name.split("/");
 		this.nameGlobal = parts[parts.length - 1];
 		
+		//name.getClass();
+		
+		//System.out.println("is interface? "+ this.getClass());
+		
+		//System.out.println("signature: ");
+		
 		String[] extender = superName.split("/");
 		this.extendNameGlobal = extender[extender.length - 1];
-		
-//		for(int i = 0; i<interfaces.length-1; i++) {
-//			implementers.add(interfaces[i]);
-//		}
-		System.out.println(Arrays.toString(interfaces));
-		
-		//String[] firstCut = Arrays.toString(interfaces).split(",");
+
 		for(int i = 0; i < interfaces.length; i++) {
 			String[] implementer = interfaces[i].split("/");
 			this.implementerNameGlobal = implementer[implementer.length - 1];
-			
-			//System.out.println(interfaces[i]);
-			
-//			String[] firstCut = interfaces[i].split(",");
-//			for(int j = 0; i < firstCut.length-1; j++) {
-//				System.out.println(firstCut[firstCut.length-1].toString());
-//				implementers.add(firstCut[firstCut.length-1]);
-//			}
+			//System.out.println("the implementer name is: " + this.implementerNameGlobal);
+			if(!this.implementerNameGlobal.equals("null")) {
+				implementers.add(this.implementerNameGlobal);
+			}
+
 		}
-		
-		//Arrays.toString(interfaces)
-		
-		System.out.println(nameGlobal);
-		
 		super.visit(version, access, name, signature, superName, interfaces);
+	}
+
+	public int getImplementedNameList() {
+		// TODO Auto-generated method stub
+		//System.out.println("ImplementerSize" + implementers.size());
+		return implementers.size();
 	}
 
 }
