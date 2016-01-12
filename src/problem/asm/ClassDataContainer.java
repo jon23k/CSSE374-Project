@@ -55,11 +55,9 @@ public class ClassDataContainer {
 	private void printConnections() {
 		// TODO Auto-generated method stub
 		this.outputStream.println(this.declVisitor.nameGlobal + " -> " + this.declVisitor.extendNameGlobal + "[arrowhead=\"onormal\", style=\"dashed\"] ");
-		
 		if((this.declVisitor.getImplementedNameList() > 0)) {
 			this.outputStream.println(this.declVisitor.nameGlobal + " -> " + this.declVisitor.implementerNameGlobal + "[arrowhead=\"curve\", style=\"dashed\"] ");
 		}
-		
 		for(int i = 1; i < this.methodVisitor.argumentTypes.size(); i++) {
 			this.outputStream.println(this.declVisitor.nameGlobal + " -> " + "\"" +this.methodVisitor.argumentTypes.get(i) + "\"" + "[arrowhead=\"curve\", style=\"dashed\"] ");
 			// This should be for the uses section

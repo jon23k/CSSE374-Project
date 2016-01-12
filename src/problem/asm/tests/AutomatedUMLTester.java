@@ -1,4 +1,4 @@
-package problem.asm;
+package problem.asm.tests;
 
 import static org.junit.Assert.*;
 

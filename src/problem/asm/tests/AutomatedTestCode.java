@@ -1,4 +1,6 @@
-package problem.asm;
+package problem.asm.tests;
+
+import problem.asm.Bicycle;
 
 public class AutomatedTestCode extends Object implements Bicycle {
 	
