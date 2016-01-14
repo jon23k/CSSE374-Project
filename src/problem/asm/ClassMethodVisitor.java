@@ -37,6 +37,15 @@ public class ClassMethodVisitor extends ClassVisitor {
 		String returnType = Type.getReturnType(desc).getClassName();
 		Type[] argTypes = Type.getArgumentTypes(desc);
 		List<String> stypes = new ArrayList<String>();
+		
+		//MethodVisitor stuff = this.visitMethod(access, name, desc, signature, exceptions);
+		
+		System.out.println("Trying to get methods: ");
+//		if(signature!=null) {
+//			System.out.println("Try 1: " + signature.);
+//		}
+		
+		//ClassMethodVisitor secondaryVisitor = new ClassMethodVisitor(Opcodes.ASM5, this);
 
 		// This block prints out all the argument types for each method
 		for(int k = 0; k < stypes.size() - 1;k++) {
@@ -49,6 +58,7 @@ public class ClassMethodVisitor extends ClassVisitor {
 				argumentTypes.add(stypes.get(k));
 			}
 		}
+		
 		String symbol = "";
 		if((access & Opcodes.ACC_PUBLIC) != 0) {
 			symbol = "+";
