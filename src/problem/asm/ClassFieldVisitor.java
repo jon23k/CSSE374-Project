@@ -32,8 +32,6 @@ public class ClassFieldVisitor extends ClassVisitor {
 	
 	public FieldVisitor visitField(int access, String name, String desc, 
 			String signature, Object value) {
-		
-		System.out.println("I am never getting here");
 
 		FieldVisitor toDecorate = super.visitField(access, name, 
 				desc, signature, value);
