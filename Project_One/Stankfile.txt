@@ -1,0 +1,19 @@
+digraph Stankfile{
+rankdir=BT;
+Integer[
+shape="record", 
+label = " Integer | + MIN_VALUE : int\l+ MAX_VALUE : int\l+ TYPE : java.lang.Class\l digits : char[]\l DigitTens : char[]\l DigitOnes : char[]\l sizeTable : int[]\l value : int\l+ SIZE : int\l serialVersionUID : long\l|+ toUnsignedString() : java.lang.String\l+ toHexString() : java.lang.String\l+ toOctalString() : java.lang.String\l+ toBinaryString() : java.lang.String\l toUnsignedString0() : java.lang.String\l formatUnsignedInt() : int\l+ toString() : java.lang.String\l+ toUnsignedString() : java.lang.String\l getChars() : void\l stringSize() : int\l+ parseInt() : int\l+ parseInt() : int\l+ parseUnsignedInt() : int\l+ parseUnsignedInt() : int\l+ valueOf() : java.lang.Integer\l+ valueOf() : java.lang.Integer\l+ valueOf() : java.lang.Integer\l+ init() : void\l+ init() : void\l+ byteValue() : byte\l+ shortValue() : short\l+ intValue() : int\l+ longValue() : long\l+ floatValue() : float\l+ doubleValue() : double\l+ toString() : java.lang.String\l+ hashCode() : int\l+ hashCode() : int\l+ equals() : boolean\l+ getInteger() : java.lang.Integer\l+ getInteger() : java.lang.Integer\l+ getInteger() : java.lang.Integer\l+ decode() : java.lang.Integer\l+ compareTo() : int\l+ compare() : int\l+ compareUnsigned() : int\l+ toUnsignedLong() : long\l+ divideUnsigned() : int\l+ remainderUnsigned() : int\l+ highestOneBit() : int\l+ lowestOneBit() : int\l+ numberOfLeadingZeros() : int\l+ numberOfTrailingZeros() : int\l+ bitCount() : int\l+ rotateLeft() : int\l+ rotateRight() : int\l+ reverse() : int\l+ signum() : int\l+ reverseBytes() : int\l+ sum() : int\l+ max() : int\l+ min() : int\l clinit() : void\l}"
+];
+Integer -> Number[arrowhead="onormal", style="dashed"] 
+Integer -> java.lang.String[arrowhead="onormal", style="dashed"] 
+Integer -> char[][arrowhead="onormal", style="dashed"] 
+Integer -> void[arrowhead="onormal", style="dashed"] 
+Integer -> java.lang.Integer[arrowhead="onormal", style="dashed"] 
+Integer -> byte[arrowhead="onormal", style="dashed"] 
+Integer -> short[arrowhead="onormal", style="dashed"] 
+Integer -> long[arrowhead="onormal", style="dashed"] 
+Integer -> float[arrowhead="onormal", style="dashed"] 
+Integer -> java.lang.Class[arrowhead="onormal", style="solid"] 
+Integer -> char[][arrowhead="onormal", style="solid"] 
+Integer -> Comparable[arrowhead="vee", style="dashed"] 
+}

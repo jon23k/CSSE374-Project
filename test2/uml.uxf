@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>400</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+ICommand
+--
+public void command(ArrayList&lt;Shape&gt; listOfShape) throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>690</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>DrawCircle
+--
+public void command(ArrayList&lt;Shape&gt; listOfShape) throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>730</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>DrawRectangle
+--
+public void command(ArrayList&lt;Shape&gt; listOfShape) throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>770</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>UndoShape
+--
+public void command(ArrayList&lt;Shape&gt; listOfShape) throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>810</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>SaveShape
+--
+public void command(ArrayList&lt;Shape&gt; listOfShape) throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>850</y>
+      <w>480</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>LoadShape
+--
+public void command(ArrayList&lt;Shape&gt; listOfShape) throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>730</x>
+      <y>470</y>
+      <w>30</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1120</x>
+      <y>360</y>
+      <w>300</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>KeyController
+--
+public void keyTyped(KeyEvent e);
+public void keyPressed(KeyEvent e);
+public void keyReleased(KeyEvent e);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>80</x>
+      <y>400</y>
+      <w>280</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>MyPanel
+--
+public Dimension getPreferredSize();
+public void paintComponent(Graphics g);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>60</y>
+      <w>720</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>SwingPaintShapes
+--
+public static void main(String[] args);
+private static void createAndShowGUI(HashMap&lt;Character, ICommand&gt; map, ArrayList&lt;Shape&gt; listOfShapes);
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>120</y>
+      <w>290</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>270.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>120</y>
+      <w>30</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1160</x>
+      <y>120</y>
+      <w>140</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;120.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>160</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>JPanel
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>180</y>
+      <w>30</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>560</y>
+      <w>300</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>KeyListener
+--
+public void keyTyped(KeyEvent e);
+public void keyPressed(KeyEvent e);
+public void keyReleased(KeyEvent e);</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1270</x>
+      <y>450</y>
+      <w>30</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>950</x>
+      <y>370</y>
+      <w>190</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>790</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>FileOutputStream
+--
+ public void close() throws IOException</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>870</y>
+      <w>410</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>ObjectOutputStream
+--
+public final void writeObject(Object obj) throws IOException;
+public void close() throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>790</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>270.0;80.0;120.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>410</x>
+      <y>860</y>
+      <w>110</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>90.0;10.0;90.0;60.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1200</x>
+      <y>800</y>
+      <w>260</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>FileInputStream
+--
+public void close() throws IOException</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1120</x>
+      <y>910</y>
+      <w>410</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>ObjectInputStream
+--
+public final void writeObject(Object obj) throws IOException;
+public void close() throws IOException;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1070</x>
+      <y>810</y>
+      <w>150</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;70.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1070</x>
+      <y>880</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;10.0;160.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>50</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>JComponent
+--
+protected void paintComponent(Graphics g);
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>100</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+</diagram>
