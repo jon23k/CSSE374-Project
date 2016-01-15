@@ -1,54 +1,122 @@
 package problem.asm;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import org.objectweb.asm.ClassReader;
-import org.objectweb.asm.Opcodes;
 
+import org.objectweb.asm.ClassReader;
+import org.objectweb.asm.ClassVisitor;
+import org.objectweb.asm.Opcodes;
 
 public class DesignParser {
 	
-	public static ArrayList<ClassDataContainer> classData = new ArrayList<ClassDataContainer>();	
+	public static ArrayList<ClassDataContainer> classData = new ArrayList<ClassDataContainer>();
+	private String CLASSNAME;
+	
+	public DesignParser(String classname){
+		// TODO Auto-generated constructor stub
+		this.CLASSNAME = classname;
+		//singleClassTester(classname);
+	}
+
 	public static void main(String[] args) throws IOException {
 		
-		PrintWriter outputStream = new PrintWriter("Stankfile.txt");
+		//Use class decorators, add one for uses and one for association to get a better design
+		
+		PrintWriter outputStream = new PrintWriter("ManualAssociationFromImplementationClass.txt");
+		Charset charset = Charset.forName("US-ASCII");
 		outputStream.println("digraph Stankfile{");
 		outputStream.println("rankdir=BT;");
 		
 		for(String className: args) {
 			// put multiple names in the run configurations
 			// or recursively look up classes and parse them
-			// Save the information in a seperate object like a differe class as an example and then print
+			// Save the information in a seperate object like a different class as an example and then print
 			// everything out at once when you are ready to
+			//System.out.println("ClassName: " + className);
+			
 			ClassReader reader = new ClassReader(className);
-			System.out.println("Reader Class: " + reader.getClass());
-			ClassDeclarationVisitor declVisitor = new ClassDeclarationVisitor(Opcodes.ASM5);
-			System.out.println(declVisitor.getClass().toString());
+
+			ClassDeclarationVisitor declVisitor = new ClassDeclarationVisitor(Opcodes.ASM5,className);
+			ClassInheritanceArrow inheritanceArrow = new ClassInheritanceArrow(Opcodes.ASM5, declVisitor);
+			ClassImplementsArrow implementsArrow = new ClassImplementsArrow(Opcodes.ASM5, declVisitor);
 			ClassFieldVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5,
 					declVisitor);
-			ClassMethodVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5,
-					fieldVisitor);
+			ClassUsesArrow usesArrow = new ClassUsesArrow(Opcodes.ASM5, declVisitor);
+			ClassMethodVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor);
+			ClassAssociationArrow associationArrow = new ClassAssociationArrow(Opcodes.ASM5, fieldVisitor);
+
+			reader.accept(inheritanceArrow, ClassReader.EXPAND_FRAMES);
+			reader.accept(implementsArrow, ClassReader.EXPAND_FRAMES);
 			reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
-			ClassDataContainer newClassData = new ClassDataContainer(outputStream, declVisitor, fieldVisitor, methodVisitor);
-			 classData.add(newClassData);
+			reader.accept(associationArrow, ClassReader.EXPAND_FRAMES);
+			reader.accept(usesArrow, ClassReader.EXPAND_FRAMES);
+						
+			ClassDataContainer newClassData = new ClassDataContainer(outputStream, declVisitor, fieldVisitor, methodVisitor,
+					inheritanceArrow, implementsArrow, associationArrow, usesArrow);
+			
+			classData.add(newClassData);
+			 
+
 		}
-		getClassData(classData);
+		//System.out.println("class data size is: " + classData.size());
 		for(int k = 0; k < classData.size();k++) {
 			classData.get(k).printInformation();
-		}		
+		}
+		
 		outputStream.println("}");
 		System.out.println("Your file has been converted!");
 		outputStream.close();
 	}
 	
-	//Created this extra method so I could get the array of ClassDataContainers and test them.
-	//DON'T DELETE THIS
-	public static ArrayList<ClassDataContainer> getClassData(ArrayList<ClassDataContainer> classData)
-	{
-		return classData;
-	}
-	
+	public void singleClassTester(String className) throws IOException {
+		//Use class decorators, add one for uses and one for association to get a better design
+		
+				PrintWriter outputStream = new PrintWriter("TESTCODE.txt");
+				Charset charset = Charset.forName("US-ASCII");
+				outputStream.println("digraph Stankfile{");
+				outputStream.println("rankdir=BT;");
+				
+					ClassReader reader = new ClassReader(className);
 
-	
+					ClassDeclarationVisitor declVisitor = new ClassDeclarationVisitor(Opcodes.ASM5,className);
+					ClassInheritanceArrow inheritanceArrow = new ClassInheritanceArrow(Opcodes.ASM5, declVisitor);
+					ClassImplementsArrow implementsArrow = new ClassImplementsArrow(Opcodes.ASM5, declVisitor);
+					ClassFieldVisitor fieldVisitor = new ClassFieldVisitor(Opcodes.ASM5,
+							declVisitor);
+					ClassUsesArrow usesArrow = new ClassUsesArrow(Opcodes.ASM5, declVisitor);
+					ClassMethodVisitor methodVisitor = new ClassMethodVisitor(Opcodes.ASM5, fieldVisitor);
+					ClassAssociationArrow associationArrow = new ClassAssociationArrow(Opcodes.ASM5, fieldVisitor);
+
+					reader.accept(inheritanceArrow, ClassReader.EXPAND_FRAMES);
+					reader.accept(implementsArrow, ClassReader.EXPAND_FRAMES);
+					reader.accept(methodVisitor, ClassReader.EXPAND_FRAMES);
+					reader.accept(associationArrow, ClassReader.EXPAND_FRAMES);
+					reader.accept(usesArrow, ClassReader.EXPAND_FRAMES);
+								
+					ClassDataContainer newClassData = new ClassDataContainer(outputStream, declVisitor, fieldVisitor, methodVisitor,
+							inheritanceArrow, implementsArrow, associationArrow, usesArrow);
+					
+					classData.add(newClassData);
+					 
+				//System.out.println("class data size is: " + classData.size());
+				for(int k = 0; k < classData.size();k++) {
+					classData.get(k).printInformation();
+				}
+				
+				outputStream.println("}");
+				System.out.println("Your file has been converted!");
+				outputStream.close();
+	}
+
+	public String getClassName() {
+		// TODO Auto-generated method stub
+		return this.CLASSNAME;
+	}
 }
